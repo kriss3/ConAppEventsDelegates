@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyApp.cs" />
+    <Compile Include="MyEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reactor.cs" />
+    <Compile Include="ReactorMonitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

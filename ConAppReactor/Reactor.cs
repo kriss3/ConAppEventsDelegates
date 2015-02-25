@@ -6,30 +6,26 @@ using System.Threading.Tasks;
 
 namespace ConAppReactor
 {
-	delegate void MyHandler(string message);
+	
 	class Reactor
 	{
-		public event MyHandler myEvent;
+
+		public delegate void MyHandler(object reactor, MyEventArgs myEA);
+
+		public event MyHandler OnMelting;
 
 		private int _temp;
 		public int Temperature
 		{
-			get { return _temp; }
 			set
 			{
 				_temp = value;
-				if (_temp > 200)
+				if (_temp > 1000)
 				{
-					FireEvent();
+					//Fire event: Create an instance of custom EventArgs and fire OnMeltdown
+					MyEventArgs myEA = new MyEventArgs("Reactor is overheating and may meltdown !!!");
+					OnMelting(this, myEA);
 				}
-			}
-		}
-
-		private void FireEvent()
-		{
-			if (myEvent != null)
-			{
-				Console.WriteLine("Reactor is melting with !!!");
 			}
 		}
 	}
